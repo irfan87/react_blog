@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+const config = require("./configs/key");
+
 // load models
 const User = require("./models/user");
 
@@ -34,8 +36,8 @@ app.post("/api/users/register", (req, res) => {
 });
 
 // add mongodb middleware
-const mongo_uri = process.env.MONGO_URI;
-mongoose.connect(mongo_uri, {
+// const mongo_uri = process.env.MONGO_URI;
+mongoose.connect(config.mongoUri, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
